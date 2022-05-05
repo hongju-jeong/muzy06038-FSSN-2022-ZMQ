@@ -1,6 +1,5 @@
 #include <string>
 #include <iostream>
-
 #include <zmq.hpp>
 
 int main()
