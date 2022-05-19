@@ -1,6 +1,7 @@
 #include <iostream>
 #include <zmq.hpp>
 #include <sstream>
+#include <string.h>
 // #include <string>
 
 int main(int argc, char *argv[])
@@ -20,7 +21,7 @@ int main(int argc, char *argv[])
     // }
     // else { zip_filter = "10001"; }
 
-    const char *filter = (argc > 1)? argv [1]: "10001 ";
+    const std::string filter = (argc > 1)? argv [1]: "10001 ";
 
     //socket.setsockopt(ZMQ_SUBSCRIBE, filter, strlen(filter));
     socket.set(zmq::sockopt::subscribe, filter);
