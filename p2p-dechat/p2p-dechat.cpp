@@ -274,8 +274,6 @@ int main(int argc, char *argv[]){            //argument, don't forget this.
 
     
 
-    sleep(5);
-
     std::cout<<"starting user registration procedure."<<std::endl;
 
     

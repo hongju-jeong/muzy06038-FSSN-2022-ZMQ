@@ -47,6 +47,7 @@ int main(){
             if(randint<10){
                 snprintf((char *) message.data(), 12, "%d", randint);
                 publisher.send(message, zmq::send_flags::none);
+                std::cout << "I: sending message " << randint << std::endl;
             }
         }
     }

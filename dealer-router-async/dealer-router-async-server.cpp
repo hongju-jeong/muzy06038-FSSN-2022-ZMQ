@@ -28,14 +28,15 @@ public:
                 worker_.recv(&msg);
                 //std::cout<<"Worker#"<<workerId_<<" received "<<std::endl;
                 std::cout<<"Worker#"<<workerId_<<" received "<<msg.to_string() <<" from "<<identity.to_string()<<std::endl;
-                int replies = within(5);
-                for (int reply = 0; reply < replies; ++reply){
-                    s_sleep(within(1000) + 1);
-                    copied_id.copy(&identity);
-                    copied_msg.copy(&msg);
-                    worker_.send(copied_id, ZMQ_SNDMORE);
-                    worker_.send(copied_msg);
-                }
+                copied_id.copy(&identity);
+                copied_msg.copy(&msg);
+                worker_.send(copied_id, ZMQ_SNDMORE);
+                worker_.send(copied_msg);
+                // int replies = within(5);
+                // for (int reply = 0; reply < replies; ++reply){
+                //     //s_sleep(within(1000) + 1);
+                    
+                // }
             }
         }
         catch (std::exception &e) {}

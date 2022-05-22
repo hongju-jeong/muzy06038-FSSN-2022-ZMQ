@@ -30,22 +30,22 @@ public:
         try {
             while (true) {
                 zmq::message_t msg;
-                for (int i = 0; i < 100; ++i) {
-                    // 10 milliseconds
-                    zmq::poll(items, 1, 10);
-                    if (items[0].revents & ZMQ_POLLIN) {
-                        //printf("\n%s ", identity);
-                        //client_socket_.recv(&identity);
-                        client_socket_.recv(&msg);
-                        //std::cout<<"Worker#"<<workerId_<<" received "<<std::endl;
-                        std::cout<<identity<<" received: "<<msg.to_string()<<std::endl;
-                        //s_dump(client_socket_);
-                    }
+                
+                zmq::poll(items, 1, 10);
+                if (items[0].revents & ZMQ_POLLIN) {
+                    //printf("\n%s ", identity);
+                    //client_socket_.recv(&identity);
+                    client_socket_.recv(&msg);
+                    //std::cout<<"Worker#"<<workerId_<<" received "<<std::endl;
+                    std::cout<<identity<<" received: "<<msg.to_string()<<std::endl;
+                    //s_dump(client_socket_);
                 }
+                
                 char request_string[16] = {};
                 sprintf(request_string, "request #%d", ++request_nbr);
                 std::cout << "Req #"<<request_nbr<<" sent.."<<std::endl;
                 client_socket_.send(request_string, strlen(request_string));
+                sleep(1);
             }
         }
         catch (std::exception &e) {}

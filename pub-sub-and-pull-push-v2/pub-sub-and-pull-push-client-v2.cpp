@@ -51,12 +51,14 @@ int main(int argc, char *argv[]){
                 msg += clientID;
                 msg += ":ON)";
                 publisher.send(zmq::buffer(msg), zmq::send_flags::none);
+                std::cout<<clientID<<": send status -activated"<<std::endl;
             }
             else if (randint > 90){
                 sleep(1);
                 msg += clientID;
                 msg += ":OFF)";
                 publisher.send(zmq::buffer(msg), zmq::send_flags::none);
+                std::cout<<clientID<<": send status -deactivated"<<std::endl;
             }
         }
     }
