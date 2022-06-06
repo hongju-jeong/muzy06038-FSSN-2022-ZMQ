@@ -1,5 +1,9 @@
 # FSSN-2022-ZMQ
 
+# environment
+ubuntu 18.04.6 LTS  
+c++ 14
+
 # Compile
 g++ -std=c++14 p2p-dechat.cpp -o dechat -L/usr/local/lib -lzmq -lpthread
 
